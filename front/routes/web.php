@@ -17,14 +17,18 @@
 
 // Rota padrão
 Route::get('/', [ 'uses' => 'MainController@default', 'as' => 'default' ]);
+Route::get('/api-doc', [ 'uses' => 'MainController@api_documentation', 'as' => 'api_doc' ]);
 
 // Rotas de autenticação
 Route::group([ 'prefix' => 'auth' ], function(){
     Route::get('login', [ 'uses' => 'AuthController@login', 'as' => 'auth.login' ]);
     Route::get('logout', [ 'uses' => 'AuthController@logout', 'as' => 'auth.logout' ]);
+
+    // Route::post('access/{token}', [ 'uses' => 'AuthController@Access', 'as' => 'auth.access' ]);
+
 });
 
 // Projeto
-Route::group([ 'prefix' => 'project' ], function(){
+Route::group([ 'prefix' => 'project', 'middleware' => 'session' ], function(){
    Route::get('home', [ 'uses' => 'MainController@home', 'as' => 'project.home' ]) ;
 });

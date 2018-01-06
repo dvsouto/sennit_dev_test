@@ -3,5 +3,6 @@
     "/css/app.css": "/css/app.css",
     "/css/default.css": "/css/default.css",
     "/css/auth.css": "/css/auth.css",
-    "/js/main.js": "/js/main.js"
+    "/js/angular-app.js": "/js/angular-app.js",
+    "/js/angular-controllers.js": "/js/angular-controllers.js"
 }

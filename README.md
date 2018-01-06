@@ -1,2 +1,6 @@
-# sennit_dev_test
-Avaliação Dev PHP
+# Sennit Dev Test
+
+A aplicação foi separada em 2 módulos: API e Front. <br/>
+ - <b>API</b>: <br/>  ....
+ - <b>Front</b>: <br/> ....
+ - Token-based authorization

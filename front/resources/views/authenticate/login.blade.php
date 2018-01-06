@@ -1,11 +1,11 @@
 @extends('templates/authenticate')
 
 @section('template')
-    <form class="form-login">
+    <form class="form-login" ng-submit="appLogin()">
         <h2>Entrar</h2>
 
-        <input type="text" id="usuario-login" class="form-control" placeholder="Usuário" required autofocus />
-        <input type="password" id="senha-login" class="form-control" placeholder="Senha" required />
+        <input type="text" id="usuario-login" ng-model="usuario" class="form-control" placeholder="Usuário" required autofocus />
+        <input type="password" id="senha-login" ng-model="senha" class="form-control" placeholder="Senha" required />
         
 {{--         <div class="checkbox">
             <label>
@@ -27,12 +27,4 @@
 
 @section('header')
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
-@endsection
-
-@section('script')
-    <script>
-        $("#btn-login").on('click', function(){
-            window.location = "http://localhost/sennit_dev_test/front/public/project/home"
-        });
-    </script>
 @endsection

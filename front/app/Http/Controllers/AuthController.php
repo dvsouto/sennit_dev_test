@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+use App\Api;
 
 /**
  * AuthController
@@ -31,6 +33,40 @@ class AuthController extends Controller
      */
     public function logout()
     {
+        session()->flush();
+
         return redirect()->route('auth.login');
+    }
+
+    ///////////////////////////////////////////////
+
+    /**
+     * Salvar token do usuário na sessão do upminer
+     */
+    public function Access($token)
+    {
+        // Apagar sessão atual
+        if (session()->get('token'))
+            session()->flush();
+
+        // Recuperar dados da sessão
+        $api = new Api();
+        $session_data = $api->Token($token);
+
+        if (! $session_data) throw new \Exception("Erro de sessão");
+        else
+        {
+            // Salvar token e sessão
+            session()->put('token', $token);
+            session()->put('session_data', $session_data);
+            // session()->save();
+
+            return response()->json([ 'status' => 'success', 'code' => 1 ]);
+
+            // Redirecionar para a página principal
+            // return redirect()->route('project.home');
+        }
+
+        return response()->json([ 'status' => 'error', 'code' => 2 ]);
     }
 }

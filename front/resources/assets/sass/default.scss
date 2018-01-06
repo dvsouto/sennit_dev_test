@@ -5,3 +5,11 @@ html, body{ background-color: #eee; }
 
 .login-box{ background-color: white; padding: 18px; border-radius: 8px; box-shadow: 0px 0px 9px rgba(0,0,0,0.025); }
 .content-box{ background-color: rgba(255,255,255,1); padding: 18px; border-radius: 3px; box-shadow: 0px 0px 10px -1px rgba(221,221,221,0.7); }
+
+.btn{ transition: background-color 0.33s; }
+
+#api-doc-iframe{ width: 100%; min-height: 620px; }
+
+.token-div{ padding: 6px 12px; background-color: #efefef; margin-bottom: 12px; border-radius: 4px; color: #101010; text-transform: uppercase; }
+.token-div > label{ margin-right: 6px }
+.token-div > input{ background-color: white; }
