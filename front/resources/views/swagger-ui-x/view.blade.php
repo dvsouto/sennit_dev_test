@@ -1,0 +1,1 @@
+@include('swagger-ui.dist.index')
