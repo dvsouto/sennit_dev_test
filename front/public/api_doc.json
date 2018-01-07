@@ -8,7 +8,7 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "localhost:2000"
+host: "localhost:8001"
 basePath: "/api"
 tags:
 - name: "Sessão"
@@ -27,7 +27,7 @@ schemes:
 - "http"
 paths:
   /token:
-    put:
+    post:
       tags:
       - "Sessão"
       summary: "Criar token para acessar a aplicação"
@@ -90,7 +90,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "X-Auth-Token"
+      - name: "token"
         in: "path"
         description: "Token"
         required: true
@@ -162,6 +162,36 @@ paths:
               $ref: "#/definitions/ApiResponse"
           401:
             description: "error"
+
+  /pessoa/get/{id}:
+      get:
+        tags:
+        - "Pessoas"
+        summary: "Recuperar pessoa"
+        description: ""
+        operationId: "pessoa_get"
+        consumes:
+        - "application/x-www-form-urlencoded"
+        produces:
+        - "application/json"
+        parameters:
+        - name: "X-Auth-Token"
+          in: "header"
+          description: "Token"
+          required: true
+          type: "string"
+
+        - name: "id"
+          in: "path"
+          required: true
+          type: integer
+        responses:
+          200:
+            description: "success"
+            schema:
+              $ref: "#/definitions/ApiResponse"
+          401:
+            description: "error"
             
   /pessoa/create:
       post:
@@ -200,8 +230,8 @@ paths:
           401:
             description: "error"
             
-  /pessoa/update:
-      post:
+  /pessoa/update/{id}:
+      put:
         tags:
         - "Pessoas"
         summary: "Atualizar pessoa"
@@ -219,7 +249,7 @@ paths:
           type: "string"
 
         - name: "id"
-          in: "formData"
+          in: "path"
           required: true
           type: integer
 
@@ -242,7 +272,7 @@ paths:
           401:
             description: "error"
             
-  /pessoa/delete:
+  /pessoa/delete/{id}:
       delete:
         tags:
         - "Pessoas"
@@ -261,7 +291,7 @@ paths:
           type: "string"
 
         - name: "id"
-          in: "formData"
+          in: "path"
           required: true
           type: integer
         responses:

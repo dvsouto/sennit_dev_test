@@ -79,7 +79,7 @@ class TokenController extends Controller
             $tokenModel->Delete($token);
 
             return IResponse::setCode(1)->setStatus('success')->getResponse(200);
-        } else return IResponse::setCode('2.2')->setStatus('error')->getResponse(401);
+        } else return IResponse::setCode('2.2')->setStatus('error')->getResponse(200);
     }
 
     /**

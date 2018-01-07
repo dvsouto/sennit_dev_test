@@ -18,7 +18,7 @@ app.controller('AppController', function($scope, $http){
 
         $http({
             url:  api + "/token",
-            method: "PUT",
+            method: "POST",
             params: {
                 "usuario": $scope.usuario,
                 "senha": $scope.senha

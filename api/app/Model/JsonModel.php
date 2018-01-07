@@ -24,6 +24,10 @@ class JsonModel
             $this->file = ucwords($this->file);
             $this->file .= ".json";
         }
+
+        // Criar arquivo json caso não exista
+        if (! Storage::disk('data')->exists($this->file))
+            Storage::disk('data')->put($this->file, '{ }');
     }
 
     /**
@@ -81,6 +85,40 @@ class JsonModel
     }
 
     /**
+     * Atualizar item
+     *
+     * @param string|int $id
+     * @param array $fields
+     * @return collect
+     */
+    public function Update($id, $fields)
+    {
+        $all_data = $this->All()->toArray();
+
+        $data = false;
+        $final = array();
+
+        foreach($all_data as $key_data => $this_data)
+        {
+            $this_data = (array) $this_data;
+
+            if ($key_data == $id)
+            {
+                foreach($fields as $k_field => $field)
+                    $this_data[$k_field] = $field;
+
+                $data = $this_data;
+            }
+            
+            $final[$key_data] = $this_data;
+        }
+
+        $this->save($final);
+
+        return collect($data);
+    }
+
+    /**
      * Deletar item
      *
      * @param string|int $id
@@ -90,13 +128,21 @@ class JsonModel
     {
         $all_data = $this->All()->toArray();
 
-        if (array_key_exists($id, $all_data))
+        // if (array_key_exists($id, $all_data))
+        // {
+        //     $data = $all_data[$id];
+        //     unset($all_data[$id]);
+        // }
+        $data = false;
+        $final = array();
+
+        foreach($all_data as $key_data => $this_data)
         {
-            $data = $all_data[$id];
-            unset($all_data[$id]);
+            if ($key_data == $id) $data = $this_data;
+            else $final[$key_data] = $this_data;
         }
-        
-        $this->save($all_data);
+
+        $this->save($final);
 
         return collect($data);
     }
