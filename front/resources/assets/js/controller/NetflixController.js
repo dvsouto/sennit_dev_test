@@ -1,104 +1,4 @@
 /**
- * Angular Controller - LoginController
- * Controlar o login do usuário
- *
- * @author Davi Souto
- *         05/01/2017
- */
-
-app.controller('AppController', function($scope, $http){
-    $scope.usuario = '';
-    $scope.senha = '';
-
-    /**
-     * Efetuar login na aplicação
-     */
-    $scope.appLogin = function(){
-        $("#btn-login").addClass("disabled").attr("disabled", true);
-
-        $http({
-            url:  api + "/token",
-            method: "POST",
-            params: {
-                "usuario": $scope.usuario,
-                "senha": $scope.senha
-            }
-        }).then(function(data){
-            var data = data.data;
-
-            if (data.status === 'success')
-            {
-                $scope.saveToken(data.data);
-            } else if (data.status === 'error')
-            {
-                toastr.error(data.message);
-
-                $("#senha-login").focus().select();
-                $("#btn-login").removeClass("disabled").removeAttr("disabled");
-            }
-
-        }, function(data){
-            var data = data.data;
-
-            if (data.status === 'error')
-                toastr.error(data.message);
-
-            $("#senha-login").focus().select();
-            $("#btn-login").removeClass("disabled").removeAttr("disabled");
-        });
-    }
-
-    /**
-     * Salvar token na sessão e redirecionar para página principal
-     * @param string token
-     */
-    $scope.saveToken = function(token)
-    {
-        $http({
-            url:  "/api/access/" + token,
-            method: "POST"
-        }).then(function(data){
-            var data = data.data;
-
-            if (data && data.status && data.status === 'success')
-            {
-                window.location = "/project/home";
-            } else if (data === undefined || ! data.status || data.status === 'error')
-            {
-                toastr.error(data.message);
-
-                $("#senha-login").focus().select();
-                $("#btn-login").removeClass("disabled").removeAttr("disabled");
-            }
-
-        }, function(data){
-            var data = data.data;
-
-            if (! data || data.status === 'error')
-                toastr.error("Ocorreu um erro");
-
-            $("#senha-login").focus().select();
-            $("#btn-login").removeClass("disabled").removeAttr("disabled");
-        });
-    }
-
-    /**
-     * Logout na aplicação
-     */
-    $scope.appLogout = function()
-    {
-        window.location = '/auth/logout';
-    }
-
-    /**
-     * Sobre a aplicação
-     */
-    $scope.appAbout = function()
-    {
-        $("#about-modal").modal('show');
-    }
-});
-/**
  * Angular Controller - NetflixController
  * Resnposável pelo acesso a API Netflix Roulette - https://reelgood.com/roulette/netflix
  *
@@ -173,10 +73,10 @@ app.controller('NetflixController', function($scope, $http){
 
                 var availability = false;
 
-
                 if (data.availability) availability = data.availability;
                 else if (data.episodes) availability = Object.values(data.episodes)[0].availability;
 
+                // Pegar url do filme
                 if (availability)
                 {
                     for(var i = 0; i < availability.length; i++)

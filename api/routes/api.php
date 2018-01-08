@@ -9,7 +9,7 @@ Route::group([ 'prefix' => 'token' ], function(){
     Route::get('/{token}', [ 'uses' => 'TokenController@getToken', 'as' => 'token.get' ])->where('token', '[A-Za-z0-9]+');
 });
 
-// Rotas da API de Pessoas (Autenticação Básica)
+// Rotas da API de Pessoas (Token Authentication)
 Route::group([ 'prefix' => 'pessoa', 'middleware' => 'auth' ], function(){
     Route::get('list', [ 'uses'   => 'PessoaController@List',   'as' => 'pessoa.list' ]);
     Route::post('create', [ 'uses' => 'PessoaController@Create', 'as' => 'pessoa.create' ]);
@@ -17,5 +17,8 @@ Route::group([ 'prefix' => 'pessoa', 'middleware' => 'auth' ], function(){
     Route::put('update/{id}', [ 'uses' => 'PessoaController@Update', 'as' => 'pessoa.update' ])->where('id', '[0-9]+');
     Route::delete('delete/{id}', [ 'uses' => 'PessoaController@Delete', 'as' => 'pessoa.delete' ])->where('id', '[0-9]+');
 });
-// Route::group([ 'prefix' => '{token}', 'middleware' => 'auth' ], function(){
-// });
+
+// Rotas da API do Netflix (Sem Autenticação)
+Route::group([ 'prefix' => 'netflix' ], function(){
+    Route::get('roll', [ 'uses'   => 'NetflixController@Roll',   'as' => 'netflix.roll' ]);
+});

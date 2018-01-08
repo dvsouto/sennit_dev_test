@@ -68,6 +68,8 @@
                     <h4 class="modal-title text-center">Sobre</h4>
                 </div>
                 <div class="modal-body">
+                    <img class="img-about" src="https://avatars0.githubusercontent.com/u/16228821?s=460&v=4" alt="Davi Souto" width="100" height="100" />
+
                     <p class="text-center">
                         Desenvolvido por <strong>Davi Souto</strong>
                     </p>

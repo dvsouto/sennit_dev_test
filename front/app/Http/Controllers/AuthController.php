@@ -41,7 +41,7 @@ class AuthController extends Controller
     ///////////////////////////////////////////////
 
     /**
-     * Salvar token do usuário na sessão do upminer
+     * Salvar token do usuário na sessão
      */
     public function Access($token)
     {
@@ -62,9 +62,6 @@ class AuthController extends Controller
             // session()->save();
 
             return response()->json([ 'status' => 'success', 'code' => 1 ]);
-
-            // Redirecionar para a página principal
-            // return redirect()->route('project.home');
         }
 
         return response()->json([ 'status' => 'error', 'code' => 2 ]);
