@@ -1,4 +1,5 @@
 
+
 # Dev Test
 
 A aplicação foi separada em 2 projetos: API e Front. <br/>
@@ -19,8 +20,7 @@ Na tela principal existem 2 abas: <br />
 ***API***: Exibe uma documentação completa da API Rest integrada com essa aplicação. <br >
 <br />
 <br />
-
---------------------------------------------------
+=========================================  <br />
 <br />
 <b>Instalação</b> <br />
 - <b>API</b> <br />
