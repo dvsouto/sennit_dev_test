@@ -25,6 +25,7 @@ As credencias de autenticação para testes são: <br>
 **Usuario**: admin <br>
 **Senha**: admin <br>
 
+Link para teste: http://35.199.65.163/ 
 
 --------------------------------------------------  
 
