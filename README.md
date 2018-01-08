@@ -20,7 +20,7 @@ Na tela principal existem 2 abas:
 ***API***: Exibe uma documentação completa da API Rest integrada com essa aplicação. <br >
 
 
-=========================================  
+--------------------------------------------------  
 
 **Instalação** 
 * **API** 
