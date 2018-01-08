@@ -17,7 +17,11 @@ de aplicaçōes externas), já nas requisiçōes via PHP esse problema não é e
 A aplicação Front contém uma tela de login na qual é feita uma autenticação na API e após autenticado cria uma sessão com esse Token. 
 Na tela principal existem 2 abas: 
 ***Netflix***: Faz a integração com a API Roulette Netflix, onde é possível buscar aleatoriamente um filme/série da netflix com alguns filtros disponíveis (para acessar o filme na netflix o mesmo precisa estar no catálogo Brasileiro e o usuário precisa ter uma conta na Netflix). 
-***API***: Exibe uma documentação completa da API Rest integrada com essa aplicação. <br >
+***API***: Exibe uma documentação completa da API Rest integrada com essa aplicação.
+
+As credencias de autenticação para testes são:
+**Usuario**: admin
+**Senha**: admin
 
 
 --------------------------------------------------  
