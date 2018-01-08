@@ -19,9 +19,11 @@ Na tela principal existem 2 abas:
 ***Netflix***: Faz a integração com a API Roulette Netflix, onde é possível buscar aleatoriamente um filme/série da netflix com alguns filtros disponíveis (para acessar o filme na netflix o mesmo precisa estar no catálogo Brasileiro e o usuário precisa ter uma conta na Netflix). 
 ***API***: Exibe uma documentação completa da API Rest integrada com essa aplicação.
 
-As credencias de autenticação para testes são:
-**Usuario**: admin
-**Senha**: admin
+<br>
+
+As credencias de autenticação para testes são: <br>
+**Usuario**: admin <br>
+**Senha**: admin <br>
 
 
 --------------------------------------------------  
